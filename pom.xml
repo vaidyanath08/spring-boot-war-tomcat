@@ -16,6 +16,7 @@
     </parent>
 
     <properties>
+    <start-class>com.mindtree.SpringBootWebApplication</start-class>
         <java.version>1.8</java.version>
     </properties>
 
@@ -27,11 +28,11 @@
         </dependency>
 
         <!-- marked the embedded servlet container as provided -->
-        <dependency>
+       <!--  <dependency>
             <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-starter-tomcat</artifactId>
             <scope>provided</scope>
-        </dependency>
+        </dependency> -->
 
         <!-- Optional, for bootstrap -->
         <dependency>
@@ -41,13 +42,5 @@
         </dependency>
 
     </dependencies>
-    <build>
-        <plugins>
-            <!-- Package as an executable jar/war -->
-            <plugin>
-                <groupId>org.springframework.boot</groupId>
-                <artifactId>spring-boot-maven-plugin</artifactId>
-            </plugin>
-        </plugins>
-    </build>
+    
 </project>
