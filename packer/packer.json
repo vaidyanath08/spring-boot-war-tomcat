@@ -9,6 +9,7 @@
         "type": "shell",
         "execute_command": "echo 'ubuntu' | {{ .Vars }} sudo -E -S sh '{{ .Path }}'",
         "inline": [
+            "sudo echo {{user `region`}} > /tmp/ami-region",
             "sleep 30",
             "apt-add-repository ppa:ansible/ansible -y",
             "/usr/bin/apt-get update",
@@ -41,7 +42,12 @@
     },
     "instance_type": "t2.micro",
     "ssh_username": "ubuntu",
-    "ami_name": "packer-example {{timestamp}}",
+    "ami_name": "packer-demo {{timestamp}}",
+    
+    "tags": {
+		"type" : "{{user `ami_tag_type_value`}}"
+	
+	},
     "launch_block_device_mappings": [{
       "device_name": "/dev/sda1",
       "volume_size": 8,
