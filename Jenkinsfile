@@ -29,11 +29,11 @@ pipeline {
     
     stage('aws deployment') {
         steps {
-           {
+          
             sh 'terraform init' 
             sh 'terraform plan build -var aws_access_key=${AWS_KEY} -var aws_secret_key=${AWS_SECRET} terraform/instance.tf'
         	sh 'terraform plan build -var aws_access_key=${AWS_KEY} -var aws_secret_key=${AWS_SECRET} terraform/instance.tf'
-        }
+        
       }
     }
         
