@@ -1,4 +1,4 @@
-pipeline {
+pipeline { 
     agent any 
     stages {
         stage('clone and clean') { 
@@ -16,6 +16,18 @@ pipeline {
                 sh 'mvn package'
             }
         }
+        
+        stage('Create Packer AMI') {
+        steps {
+          withCredentials([
+            usernamePassword(credentialsId: '427eca12-088b-4675-990c-61ee33c20721', passwordVariable: 'AWS_SECRET', usernameVariable: 'AWS_KEY')
+          ]) {
+            sh 'packer build -var aws_access_key=${AWS_KEY} -var aws_secret_key=${AWS_SECRET} packer/packer.json'
+        }
+      }
+    }
+        
+         /*
         stage('Deploy to Tomcat'){
             steps{
       sshagent(['tomcat-dev']) {
@@ -23,6 +35,8 @@ pipeline {
       }
       }
    }
+   
+   */
 
     }
 }
