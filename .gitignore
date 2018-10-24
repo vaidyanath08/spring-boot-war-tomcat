@@ -9,7 +9,7 @@ target/
 .settings
 .springBeans
 .sts4-cache
-
+terraform/terraform.tfvars
 ### IntelliJ IDEA ###
 .idea
 *.iws
